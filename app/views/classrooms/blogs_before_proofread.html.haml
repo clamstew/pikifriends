@@ -1,0 +1,17 @@
+!!! XML
+%blogs
+  -@classroom.users.each do |user|
+    -user.blogs.each do |blog|
+      -if blog.proofread.blank?
+        %blog
+          %user
+            %id= user.id
+            %role= user.role.name
+            %firstname= user.firstname
+            %lastname= user.lastname
+            %thumb= url_for_file_column user,'image','thumb'
+          %id= blog.id
+          %title= blog.title
+          %body= blog.body
+          %updated_at= blog.updated_at
+

@@ -1,0 +1,17 @@
+<p>
+	<b>Username:</b><br/>
+	<%= @blog.user.username %><br/>
+</p>
+
+<p>
+	<b>Title</b><br/>
+	<%=h @blog.title %>
+</p>
+
+<p>
+	<b>Body:</b><br/>
+	<%= @blog.body %><br/>
+</p>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>

@@ -1,0 +1,28 @@
+<h1>Listing PikiNews</h1>
+<p><%= link_to 'New PikiNews', new_admin_piki_entry_path %></p>
+<table class='datalist'>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Image</th>
+    <th>Published at</th>
+    <th>Action</th>
+  </tr>
+
+<% @piki_entries.each do |piki_entry| %>
+  <tr>
+    <td><%=h piki_entry.title %></td>
+    <td><%=h piki_entry.body %></td>
+    <td><% unless piki_entry.image.blank? %>
+    <%= image_tag url_for_file_column(piki_entry,'image','thumb') %>
+    <% end %></td>
+    <td><%=h piki_entry.published_at %></td>
+    <td>
+      <%= link_to 'Show', admin_piki_entry_path(piki_entry) %>
+      <%= link_to 'Edit', edit_admin_piki_entry_path(piki_entry) %>
+      <%= link_to 'Destroy', admin_piki_entry_path(piki_entry), :confirm => 'Are you sure?', :method => :delete %>
+  </tr>
+<% end %>
+</table>
+
+

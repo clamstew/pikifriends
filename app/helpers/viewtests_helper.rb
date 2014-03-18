@@ -1,0 +1,2 @@
+module ViewtestsHelper
+end

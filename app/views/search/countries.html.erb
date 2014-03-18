@@ -1,0 +1,20 @@
+<countries>
+<% for country in @countries %>
+  <country>
+    <id><%= country.id %></id>
+    <name><%=h country.name %></name>
+    <shortname><%=h country.shortname %></shortname>
+    
+    <schools>
+    <% for school in country.schools %>
+      <school>
+        <id><%= school.id %></id>
+        <name><%=h school.name %></name>
+        <location><%=h school.location %></location>
+      </school>
+    <% end %>
+    </schools>
+  </country>
+<% end %>
+</countries>
+

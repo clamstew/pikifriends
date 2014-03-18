@@ -1,0 +1,18 @@
+<h1>Listing faq_categories</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @faq_categories.each do |faq_category| %>
+  <tr>
+    <td><%= link_to 'Show', faq_category %></td>
+    <td><%= link_to 'Edit', edit_faq_category_path(faq_category) %></td>
+    <td><%= link_to 'Destroy', faq_category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New faq_category', new_faq_category_path %>

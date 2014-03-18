@@ -1,0 +1,17 @@
+<h1>Listing teacher_tickets</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @teacher_tickets.each do |teacher_ticket| %>
+  <tr>
+    <td><%=h teacher_ticket.firstname.to_s+', '+teacher_ticket.lastname.to_s %></td>
+  	<td><%=h teacher_ticket.email %></td>
+    <td><%= link_to 'Show', admin_teacher_ticket_path(teacher_ticket) %></td>
+    <td><%= link_to 'Edit', edit_admin_teacher_ticket_path(teacher_ticket) %></td>
+    <td><%= link_to 'Destroy', admin_teacher_ticket_path(teacher_ticket), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

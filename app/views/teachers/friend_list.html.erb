@@ -1,0 +1,25 @@
+<friends>
+  <% for friendship in @user.friendships %>
+  <%  
+    if @user.id == friendship.request_user_id
+      friend_id = friendship.replay_user_id
+    elsif @user.id == friendship.replay_user_id
+      friend_id = friendship.request_user_id
+    end
+    
+    begin
+      @friend = User.find(friend_id.to_i)
+  %>
+  <item id='<%= friendship.id %>' >
+    <user id='<%= @friend.id %>'>
+      <firstname><%=h @friend.firstname %></firstname>
+      <lastname><%=h @friend.lastname %></lastname>
+      <img src='<%=h url_for_file_column(@friend,'image','thumb') %>' />
+      <role><%=h @friend.role.name %></role>
+    </user>
+    <linked><%= friendship.linked %></linked>
+  </item>
+    <% rescue %>
+    <% end %>
+  <% end %>
+</friends>

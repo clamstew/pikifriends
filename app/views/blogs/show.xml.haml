@@ -1,0 +1,13 @@
+!!! XML
+%blog
+	%id= @blog.id
+	%title= h @blog.title
+	%body= h @blog.body
+	%created_at= h @blog.created_at
+	%updated_at= h @blog.updated_at
+	- write_user = User.find(@blog.user_id.to_i)
+	%user
+		%id= write_user.id
+		%firstname= write_user.firstname
+		%lastname= write_user.lastname
+		%thumb= url_for_file_column(write_user,'image','thumb')

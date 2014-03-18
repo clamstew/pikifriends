@@ -1,0 +1,18 @@
+<p>
+	<b>Firstname</b><br />
+	<%=h @teacher_ticket.firstname %>
+</p>
+<p>
+	<b>Lastname</b><br />
+	<%=h @teacher_ticket.lastname %>
+</p>
+<p>
+	<b>email</b><br />
+	<%=h @teacher_ticket.email %>
+</p>
+<p>
+	<b>school</b><br />
+	<%=h @teacher_ticket.school.name %>
+</p>
+<%= link_to 'Edit', edit_teacher_ticket_path(@teacher_ticket) %> |
+<%= link_to 'Back', teacher_tickets_path %>

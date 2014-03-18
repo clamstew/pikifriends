@@ -1,0 +1,25 @@
+!!! XML
+%blog
+  %id= @blog.id
+  %title= @blog.title
+  %body= @blog.body
+  %created_at= @blog.created_at
+  %updated_at= @blog.updated_at
+  
+  %user
+    %id= @blog.user.id
+    %firstname= @blog.user.firstname
+    %lastname= @blog.user.lastname
+    %thumb= url_for_file_column(@blog.user,'image','thumb')
+    %role= @blog.user.role.name
+    
+  - if @blog.proofread
+    %proofread
+      %title= @blog.proofread.title
+      %body= @blog.proofread.body
+      %proofreader
+        %id= @blog.proofread.proofreader.id
+        %role= @blog.proofread.proofreader.role.name
+        %firstname= @blog.proofread.proofreader.firstname
+        %lastname= @blog.proofread.proofreader.lastname
+        %thumb= url_for_file_column @blog.proofread.proofreader, 'image', 'thumb'

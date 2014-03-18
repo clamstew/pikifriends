@@ -1,0 +1,17 @@
+%h1 Listing schools
+%p= link_to 'New school', new_admin_school_path
+%table.datalist
+  %tr
+    %th Country
+    %th School
+    %th Action
+  - for school in @schools
+    %tr
+      %td= school.country.name if school.country
+      %td= school.name
+      %td
+        = link_to 'Show', admin_school_path(school)
+        |
+        = link_to 'Edit', edit_admin_school_path(school)
+        |
+        = link_to 'Destroy', admin_school_path(school), :confirm => 'Are you sure?', :method => :delete

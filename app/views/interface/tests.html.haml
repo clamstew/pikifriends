@@ -1,0 +1,22 @@
+!!! 5
+%html
+  %head
+    %meta{"http-equiv"=>"Content-Type", "content"=>"text/html; charset=utf-8"}
+    %title Tests
+    = stylesheet_link_tag 'tests'
+    %script{"type"=>"text/javascript", "src"=>"/javascripts/swfobject.js"}
+    %script{"type"=>"text/javascript", "src"=>"/javascripts/swfaddress.js"}
+    %script{"type"=>"text/javascript", "src"=>"/javascripts/swfmacmousewheel2.js"}
+    %script{"type"=>"text/javascript"}
+      var vars = {};
+      var params = { scale:'noScale', salign:'lt', menu:'false' };
+      var attributes = { id:'interface', name:'interface' }; // give an id to the flash object
+
+      swfobject.embedSWF("/swf/tests.swf?"+(new Date()).getTime(), "interface", "100%", "100%", "10.0.0", "/swf/expressInstall.swf", vars, params, attributes);
+      swfmacmousewheel.registerObject(attributes.id);
+  %body
+    %div#interface
+      %h1 Tests
+      %div
+        This Site required:
+        javascript ${link_to "flash Plug-in 10+", "http://www.adobe.com/go/getflashplayer"}

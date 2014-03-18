@@ -1,0 +1,23 @@
+<h1>Listing friendships</h1>
+
+<table>
+  <tr>
+    <td>Relation</td>
+    <td>Linked</td>
+  </tr>
+
+<% for friendship in @friendships %>
+  <% request_user = User.find(friendship.request_user_id) %>
+  <% replay_user = User.find(friendship.replay_user_id) %>
+  <tr>
+    <td><%=h request_user.username %> -> <%=h replay_user.username %></td>
+    <td><%= friendship.linked %></td>
+    <td><%= link_to 'Show', friendship %></td>
+    <td><%= link_to 'Edit', edit_friendship_path(friendship) %></td>
+    <td><%= link_to 'Destroy', friendship, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+<br />
+
+<%= link_to 'New friendship', new_friendship_path %>
+

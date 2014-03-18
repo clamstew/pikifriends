@@ -1,0 +1,28 @@
+<h1>New blog</h1>
+
+<% form_for(@blog) do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+		<b><%= f.label :user_id %></b><br/>
+		<%= f.collection_select 'user_id', User.find(:all), :id, :username %>
+	</p>
+	
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </p>
+  
+
+	
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', blogs_path %>

@@ -1,0 +1,32 @@
+<classroom>
+  <id><%= @classroom.id %></id>
+  <name><%= @classroom.name %></name>
+  <grade_name><%= @classroom.grade.name %></grade_name>
+  <students>
+    <% @classroom.users.find(:all, :conditions=>["role_id = ?",[@role.id]]).each{|student| %>
+      <student>
+        <id><%= student.id %></id>
+        <firstname><%=h student.firstname %></firstname>
+        <lastname><%=h student.lastname %></lastname>
+        <username><%=h student.username %></username>
+        <password><%=h student.password %></password>
+        <created_at><%=h student.created_at %></created_at>
+        <login_count><%= student.login %></login_count>
+        <% if student.about.blank? %>
+        <aboutme_length>0</aboutme_length>
+        <% else %>
+        <aboutme_length><%= student.about.length %></aboutme_length>
+        <% end %>
+        
+        <friends_count><%= student.linked_friendships.count %></friends_count>
+        <messages_count><%= student.get_messages_count() %></messages_count>
+        <blogs_count><%= student.blogs.count %></blogs_count>
+        <blog_comments_count><%= student.get_blog_comments_count() %></blog_comments_count>
+        <images_count><%= student.pictures.count %></images_count>
+        <image_comments_count><%= student.get_image_comments_count() %></image_comments_count>
+        
+      </student>
+    <%}%>
+  </students>
+</classroom>
+

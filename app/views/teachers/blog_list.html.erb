@@ -1,0 +1,33 @@
+<blogs>
+  <% @limitNum = 0 %>
+	<% for blog in @blogs %>
+	<blog>
+	  <id><%= blog.id %></id>
+	  <user_id><%=h blog.user.id %></user_id>
+		<title><%=h blog.title %></title>
+		<body><%=h blog.body %></body>
+		<created_at><%=h blog.created_at %></created_at>
+		<updated_at><%=h blog.updated_at %></updated_at>
+		
+		<comments>
+		  <% for comment in blog.blog_comments %>
+		  <comment>
+		    <id><%= comment.id %></id>
+		    <body><%=h comment.body %></body>
+		    <write_user>
+		      <% write_user = User.find(comment.write_user_id.to_i)  %>
+		      <id><%=h write_user.id %></id>
+		      <firstname><%=h write_user.firstname %></firstname>
+		      <lastname><%=h write_user.lastname %></lastname>
+		      <thumb><%=h url_for_file_column(write_user,'image','thumb') %></thumb>
+		    </write_user>
+		  </comment>
+		  <% end %>
+		</comments>
+	</blog>
+	
+	<% if @limitNum > 4
+	  break 
+	end %>
+	<% end %>
+</blogs>

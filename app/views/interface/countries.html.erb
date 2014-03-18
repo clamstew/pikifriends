@@ -1,0 +1,9 @@
+<countries>
+<% @countries.each{|country| %>
+  <country>
+    <id><%= country.id %></id>
+    <name><%=h country.name %></name>
+    <shortname><%=h country.shortname %></shortname>
+  </country>
+<%}%>
+</countries>

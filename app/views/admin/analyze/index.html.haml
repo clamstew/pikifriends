@@ -1,0 +1,36 @@
+%h1 Analyze
+%div.table
+  %h3 Blogs
+  %table.datalist
+    %tr
+      %th 
+        学校名
+      %th 
+        名前
+      %th 
+        合計
+        
+    - @schools.each do |school|
+      - school.students.each do |student|
+        %tr
+          %td= school.name
+          %td #{student.lastname}, #{student.firstname}
+          %td #{student.blogs.length}
+          
+%div.table
+  %h3 Images
+  %table.datalist
+    %tr
+      %th 
+        学校名
+      %th 
+        名前
+      %th 
+        合計
+
+    - @schools.each do |school|
+      - school.students.each do |student|
+        %tr
+          %td= school.name
+          %td #{student.lastname}, #{student.firstname}
+          %td #{student.pictures.length}

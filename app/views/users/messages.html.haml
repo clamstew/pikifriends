@@ -1,0 +1,12 @@
+%list
+  -for message in @user.messages
+    -muser = User.find(message.write_user_id)
+    %item
+      %id= message.id
+      %write_user
+        %id= muser.id
+        %firstname&= muser.firstname
+        %lastname&= muser.lastname
+        %thumb= url_for_file_column(muser,'image','thumb')
+        %role= muser.role.name
+      %body&= message.body

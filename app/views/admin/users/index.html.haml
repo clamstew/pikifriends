@@ -1,0 +1,19 @@
+%h1 Listing users
+%p= link_to 'New user', new_admin_user_path
+
+%div
+  %table.datalist
+    %tr
+      %th Thumbnail
+      %th Name
+      %th Action
+    - for user in @users
+      %tr
+        %td= image_tag url_for_file_column(user,'image','thumb') unless user.image.blank?
+        %td #{user.firstname unless user.firstname.blank?}, #{user.lastname unless user.lastname.blank?}
+        %td
+          = link_to 'Show', admin_user_path(user)
+          = link_to 'Edit', edit_admin_user_path(user)
+          = link_to 'Destroy', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete
+
+%p= will_paginate(@users, :class => 'digg_pagination')

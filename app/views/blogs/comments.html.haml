@@ -1,0 +1,11 @@
+%list
+  -@blog.blog_comments.each do |comment|
+    %item
+      %id= comment.id
+      %body= comment.body
+      %write_user
+        %id= comment.write_user_id
+        %role= comment.write_user.role.name
+        %firstname= comment.write_user.firstname
+        %lastname= comment.write_user.lastname
+        %thumb= url_for_file_column(comment.write_user, 'image', 'thumb')

@@ -1,0 +1,9 @@
+!!! XML
+%list
+  -for friend in @user.friends
+    %item
+      %id= friend.id
+      %role= friend.role.name
+      %firstname&= friend.firstname
+      %lastname&= friend.lastname
+      %thumb= url_for_file_column(friend,'image','thumb')

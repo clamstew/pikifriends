@@ -1,0 +1,22 @@
+<h1>New friendship</h1>
+
+<% form_for(@friendship) do |f| %>
+  <%= f.error_messages %>
+	<p>
+		<b><%= f.label :request_user_id %></b><br/>
+		<%= f.collection_select 'request_user_id', User.find(:all), :id, :username %>
+	</p>
+	<p>
+		<b><%= f.label :replay_user_id %></b><br/>
+		<%= f.collection_select 'replay_user_id', User.find(:all), :id, :username %>
+	</p>
+	<p>
+		<b><%= f.label :linked %></b><br/>
+		<%= f.check_box :linked %>
+	</p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', friendships_path %>

@@ -1,0 +1,14 @@
+%div.app_name= link_to $app_name, :controller => :dashboard
+%div.login
+  %ul
+    - if @admin
+      %li= link_to 'logout', :controller => :login, :action => 'disable'
+- if @admin
+  %div.menu
+    %ul
+      %li= link_to 'Schools', :controller => 'schools'
+      %li= link_to 'Users', :controller => 'users'
+      %li= link_to 'PikiNews', :controller => 'piki_entries'
+      %li= link_to 'TeacherTickets', :controller => 'teacher_tickets'
+      %li= link_to 'Friendships', :controller => 'friendships'
+      %li= link_to 'Analyze', :controller => 'analyze'

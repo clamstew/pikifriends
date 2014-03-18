@@ -1,0 +1,90 @@
+%activities
+  -@sorted_recent_activities.each do |obj|
+    -if obj.class==Blog
+      %activity
+        %type= "friendblogCreated"
+        %user
+          %id= obj.user.id
+          %role= obj.user.role.name
+          %firstname&= obj.user.firstname
+          %lastname&= obj.user.lastname
+          %thumb= url_for_file_column(obj.user,'image','thumb')  
+        %blog
+          %id= obj.id
+          %title&= obj.title
+          %created_at= obj.created_at
+          
+    -if obj.class==Picture
+      %activity
+        %type= "friendimageCreated"
+        %user
+          %id= obj.user.id
+          %role= obj.user.role.name 
+          %firstname&= obj.user.firstname 
+          %lastname&= obj.user.lastname 
+          %thumb= url_for_file_column(obj.user,'image','thumb') 
+        %image
+          %id= obj.id 
+          %title&= obj.title 
+          %thumb= url_for_file_column(obj,'image','thumb') 
+          %created_at= obj.created_at 
+
+    -if obj.class==BlogComment 
+      - write_user = User.find(obj.write_user_id.to_i) 
+      %activity
+        %type= "blogCommentForMe"
+        %user
+          %id= write_user.id 
+          %role= write_user.role.name 
+          %firstname&= write_user.firstname 
+          %lastname&= write_user.lastname 
+          %thumb= url_for_file_column(write_user,'image','thumb') 
+        %comment
+          %id= obj.id 
+          %blog_id= obj.blog.id 
+          %body&= obj.body 
+          %created_at= obj.created_at 
+    -if obj.class==ImageComment 
+      -write_user = User.find(obj.write_user_id.to_i) 
+      %activity
+        %type= "imageCommentForMe"
+        %user
+          %id= write_user.id 
+          %role= write_user.role.name 
+          %firstname&= write_user.firstname 
+          %lastname&= write_user.lastname 
+          %thumb= url_for_file_column(write_user,'image','thumb') 
+        %comment
+          %id= obj.id 
+          %image_id= obj.picture.id 
+          %body&= obj.body 
+          %created_at= obj.created_at 
+         
+    -if obj.class==ProfileComment 
+      -write_user = User.find(obj.write_user_id.to_i ) 
+      %activity
+        %type= "messageForMe"
+        %user
+          %id= write_user.id 
+          %role= write_user.role.name 
+          %firstname&= write_user.firstname 
+          %lastname&= write_user.lastname 
+          %thumb= url_for_file_column(write_user,'image','thumb') 
+        %message
+          %id= obj.id
+          %body&= obj.body
+          %created_at= obj.created_at
+        
+    -if obj.class==Friendship 
+      -reply_user = User.find( obj.replay_user.id.to_i ) 
+      %activity
+        %type= "linkedFriendship"
+        %user  
+          %id= reply_user.id 
+          %role= reply_user.role.name 
+          %firstname&= reply_user.firstname 
+          %lastname&= reply_user.lastname 
+          %thumb= url_for_file_column(reply_user,'image','thumb') 
+        %friendship
+          %id= obj.id
+          %updated_at= obj.updated_at 

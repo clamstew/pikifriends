@@ -1,0 +1,26 @@
+<h1>New picture</h1>
+
+<% form_for(@picture, :html => {:multipart => true}) do |f| %>
+	<%= f.error_messages %>
+
+	<p>
+	  <b><%= f.label :title %></b>
+		<%= f.text_field :title %>
+	</p>
+	
+	<p>
+		<b>Picture File</b><br/>
+		<%= file_column_field 'picture', 'image' %>
+	</p>
+	
+	<p>
+		<b><%= f.label :user_id %></b><br/>
+		<%= f.collection_select 'user_id', User.find(:all), :id, :username %>
+	</p>
+	
+	<p>
+		<%= f.submit "Create" %>
+	</p>
+<% end %>
+
+<%= link_to 'Back', pictures_path %>

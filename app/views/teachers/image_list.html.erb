@@ -1,0 +1,34 @@
+<images>
+	<% for picture in @user.pictures %>
+	<% @picture = picture %>
+	<image>
+	  
+	  <id><%=h @picture.id %></id>
+		<title><%=h @picture.title %></title>
+		<% unless @picture.image.blank? %>
+		<thumb><%=h url_for_file_column(@picture,'image','thumb') %></thumb>
+		<medium><%=h url_for_file_column(@picture,'image','medium') %></medium>
+		<original><%=h url_for_file_column(@picture,'image') %></original>
+    <% end %>
+		<created_at><%=h @picture.created_at %></created_at>
+		<updated_at><%=h @picture.updated_at %></updated_at>
+		
+		<comments>
+		  <% for comment in @picture.image_comments %>
+		  <comment>
+		    <id><%= comment.id %></id>
+		    <body><%=h comment.body %></body>
+		    <write_user>
+		      <% write_user = User.find(comment.write_user_id.to_i)  %>
+		      <id><%=h write_user.id %></id>
+		      <firstname><%=h write_user.firstname %></firstname>
+		      <lastname><%=h write_user.lastname %></lastname>
+		      <thumb><%=h url_for_file_column(write_user,'image','thumb') %></thumb>
+		    </write_user>
+		  </comment>
+		  <% end %>
+		</comments>
+		
+	</image>
+	<% end %>
+</images>

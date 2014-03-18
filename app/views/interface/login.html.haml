@@ -1,0 +1,19 @@
+!!! XML
+%authorization
+  %user
+    %token= @user.token.data
+    %id= @user.id
+    %username= @user.username
+    %role= @user.role.name
+    %firstname&= @user.firstname
+    %lastname&= @user.lastname
+    %about&= @user.about
+    %mykeyword_list= @user.mykeyword_list
+    %thumb= url_for_file_column(@user,'image','thumb')
+    %medium= url_for_file_column(@user,'image','medium')
+    %original= url_for_file_column(@user,'image')
+    %school
+      %id= @user.school.id
+      %name&= @user.school.name
+      %location&= @user.school.location
+

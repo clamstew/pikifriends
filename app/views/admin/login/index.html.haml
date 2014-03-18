@@ -1,0 +1,13 @@
+%h1 Login
+- if flash[:notice]
+  %div#notice= flash[:notice]
+- form_for @administrator, :url => {:action=>'authorize'} do |f|
+  %p 
+    #{f.label :email, 'email'}
+    #{f.text_field :email}
+  %p 
+    #{f.label :password, 'password'}
+    #{f.password_field :password}
+    %span.note (6-255 characters)
+  %p 
+    #{f.submit 'Go'}

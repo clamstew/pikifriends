@@ -1,0 +1,18 @@
+<messages>
+  <% for message in @user.messages %>
+  <% @muser = User.find(message.write_user_id) %>
+  <message>
+    <id><%= message.id %></id>
+    <write_user>
+      <id><%= @muser.id %></id>
+      <firstname><%=h @muser.firstname %></firstname>
+      <lastname><%=h @muser.lastname %></lastname>
+      <thumb src="<%=h url_for_file_column(@muser,'image','thumb') %>" />
+      <role><%= @muser.role.name %></role>
+    </write_user>
+    <body>
+      <%=h message.body %>
+    </body>
+  </message>
+  <% end %>
+</messages>

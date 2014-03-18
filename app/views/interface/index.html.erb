@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>PikiFriends</title>
+		<link rel="icon" type="image/png" href="/favicon.png">
+		<style type="text/css">
+		<!--
+			html, body {
+				background-color: #FFFFFF;
+				overflow: hidden;
+			}
+
+			body {
+				color: #454545;
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		-->
+		</style>
+		<script type="text/javascript" src="/javascripts/swfobject.js"></script>
+		<script type="text/javascript" src="/javascripts/swfaddress.js"></script>
+		<script type="text/javascript" src="/javascripts/swfmacmousewheel2.js"></script>
+		<script type="text/javascript">
+			var vars = {};
+			var params = { scale:'noScale', salign:'lt', menu:'false' };
+			var attributes = { id:'interface', name:'interface' }; // give an id to the flash object
+			
+			swfobject.embedSWF("/interface.swf?"+(new Date()).getTime(), "interface", "100%", "100%", "10.0.0", "/swf/expressInstall.swf", vars, params, attributes);
+			swfmacmousewheel.registerObject(attributes.id);
+		</script>
+	</head>
+	<body>
+		<div id="interface">
+			<h1>PikiFriends</h1>
+The only online tool exclusively for Junior and Senior High Schools worldwide designed to improve English as a Second Language education and promote cross-cultural learning.<br/>
+<br/>
+It’s a unique, full-featured ‘penpal’ tool for secondary school students and teachers around the world.<br/>
+<br/>
+Safe, educational, easy to use and 100% free.<br/>
+<br/>
+PikiFriends joins school communities together like never before and provides its members with many exciting ways to make authentic connections using English.  Created by an experienced teacher, PikiFriends is a rare mix of sound educational methodology, cutting edge technology and functional design.<br/>
+<br/>
+PikiFriends is currently in the prototype phase.<br/>
+Before our worldwide launch sometime in 2009, we are connecting a limited number of schools internationally for testing purposes.  If you would like to join or need information, please <a href='mailto:dionnej@ashleyhall.org'><u>contact</u></a> us.<br/>
+<hr/>
+This Site required:<br/>
+javascript,
+flash Plug-in 10+ <a href="http://www.adobe.com/go/getflashplayer"><img src="./images/get_flash_player.gif" alt="Get Adobe Flash player" /></a>
+		</div>
+	</body>
+</html>

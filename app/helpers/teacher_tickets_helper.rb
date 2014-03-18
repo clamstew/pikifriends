@@ -1,0 +1,2 @@
+module TeacherTicketsHelper
+end

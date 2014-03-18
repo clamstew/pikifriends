@@ -1,0 +1,18 @@
+
+<school>
+  <id><%=h @school.id %></id>
+  <name><%=h @school.name %></name>
+  <location><%=h @school.location %></location>
+  <country><%=h @school.country.name %></country>
+  <users>
+    <% for user in @school.users %>
+    <user>
+      <id><%=h user.id %></id>
+      <role><%=h user.role.name %></role>
+      <firstname><%=h user.firstname %></firstname>
+      <lastname><%=h user.lastname %></lastname>
+      <thumb><%=h url_for_file_column( user,'image','thumb') %></thumb>
+    </user>
+    <% end %>
+  </users>
+</school>

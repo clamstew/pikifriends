@@ -1,0 +1,27 @@
+!!! XML
+%notices
+  %friendships
+    -@user.noreply_friendships.each do |noreply_friendship|
+      -request_user = User.find(noreply_friendship.request_user_id)
+      -reply_user   = User.find(noreply_friendship.replay_user_id)
+    
+      %friendship
+        %id= noreply_friendship.id
+        %request_user
+          %id= request_user.id
+          %role= request_user.role.name
+          %firstname&= request_user.firstname
+          %lastname&= request_user.lastname
+          %thumb= url_for_file_column( request_user,'image','thumb' )
+          %school
+            %id= request_user.id
+            %name&= request_user.school.name
+            %location&= request_user.school.location
+            %country&= request_user.school.country.name
+      
+        %reply_user
+          %id= reply_user.id
+          %role= reply_user.role.name
+          %firstname&= reply_user.firstname
+          %lastname&= reply_user.lastname
+          %thumb= url_for_file_column( reply_user,'image','thumb' )

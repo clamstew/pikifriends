@@ -1,0 +1,15 @@
+!!! XML
+%list
+  - @blogs.each do |blog|
+    %item
+      %id= blog.id
+      %title&= blog.title
+      %body&= blog.body
+      %comment_num= blog.blog_comments.count
+      %created_at= blog.created_at
+      %updated_at= blog.updated_at
+      -if blog.proofread
+        %proofread
+          %id= blog.proofread.id
+          
+          

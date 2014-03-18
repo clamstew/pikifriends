@@ -1,0 +1,19 @@
+<p>
+  <b>Title:</b><%=h @piki_entry.title %>
+</p>
+
+<p>
+  <b>Body:</b><%=h @piki_entry.body %>
+</p>
+
+<p>
+  <b>Image:</b><img src="<%=h url_for_file_column(@piki_entry,'image','thumb') %>" />
+</p>
+
+<p>
+  <b>Published at:</b><%=h @piki_entry.published_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_piki_entry_path(@piki_entry) %> |
+<%= link_to 'Back', admin_piki_entries_path %>

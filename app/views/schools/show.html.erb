@@ -1,0 +1,7 @@
+<p id="id"><%=h @school.id %></p>
+<p id="name"><%=h @school.name %></p>
+<p id="location"><%=h @school.location %></p>
+<p id="country"><%=h @school.country.name %></p>
+  
+<%= link_to 'Edit', edit_school_path(@school) %> |
+<%= link_to 'Back', schools_path %>

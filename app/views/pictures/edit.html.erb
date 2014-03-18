@@ -1,0 +1,27 @@
+<h1>Editing Picture</h1>
+
+<% form_for(@picture) do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+	<%= f.label :title %>
+		<%= f.text_field :title %>
+	</p>
+	
+	<p>
+		<b>Image</b><br />
+		<%= file_column_field 'picture', 'image' %>
+	</p>
+	
+	<p>
+		<b><%= f.label :user_id %></b><br/>
+		<%= f.collection_select 'user_id', User.find(:all), :id, :username %>
+	</p>
+	
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @picture %> |
+<%= link_to 'Back', pictures_path %>

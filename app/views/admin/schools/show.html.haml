@@ -1,0 +1,8 @@
+%p.id ID: #{@school.id}
+%p.name Name: #{@school.name}
+%p.location Location: #{@school.location}
+%p.country Country: #{@school.country.name}
+
+= link_to 'Edit', edit_admin_school_path(@school)
+|
+= link_to 'Back', admin_schools_path

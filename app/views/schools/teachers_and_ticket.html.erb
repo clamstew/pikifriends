@@ -1,0 +1,27 @@
+<school>
+  <id><%= @school.id %></id>
+  <name><%= @school.name %></name>
+  <teachers>
+    <% @teachers.each{|teacher| %>
+      <teacher>
+        <id><%= teacher.id %></id>
+        <username><%=h teacher.username %></username>
+        <password><%=h teacher.password %></password>
+        <firstname><%=h teacher.firstname %></firstname>
+        <lastname><%=h teacher.lastname %></lastname>
+        <thumb><%=h url_for_file_column( teacher,'image','thumb') %></thumb>
+      </teacher>
+    <%}%>
+  </teachers>
+  <tickets>
+    <% @tickets.each{|ticket| %>
+      <ticket>
+        <id><%= ticket.id %></id>
+        <firstname><%=h ticket.firstname %></firstname>
+        <lastname><%=h ticket.lastname %></lastname>
+        <email><%=h ticket.email %></email>
+      </ticket>
+    <%}%>
+  </tickets>
+</school>
+

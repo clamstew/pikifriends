@@ -1,0 +1,17 @@
+%students
+  -@students.each do |student|
+    %student
+      %id= student.id
+      %username= student.username
+      %password= student.password
+      %firstname= student.firstname
+      %lastname= student.lastname
+      %thumb= url_for_file_column(student,'image','thumb')
+      %hold= student.hold
+      - unless student.classroom.blank?
+        %grade
+          %id= student.classroom.grade.id
+          %name= student.classroom.grade.name
+        %classroom
+          %id= student.classroom.id
+          %name= student.classroom.name

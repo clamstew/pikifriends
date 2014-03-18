@@ -1,0 +1,27 @@
+<h1>Editing school</h1>
+
+<% form_for(@school) do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </p>
+  
+  <p>
+		<b><%= f.label :county_id %></b><br/>
+		<%= f.collection_select 'country_id', Country.find(:all, :order=>'name'), :id, :name %>
+	</p>
+	
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @school %> |
+<%= link_to 'Back', schools_path %>

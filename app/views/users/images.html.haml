@@ -1,0 +1,12 @@
+!!! XML
+%list
+  - @pictures.each do |picture|
+    %item
+      %id= picture.id
+      %title&= picture.title
+      %thumb= url_for_file_column(picture,'image','thumb')
+      %medium= url_for_file_column(picture,'image','medium')
+      %original= url_for_file_column(picture,'image')
+      %comment_num= picture.image_comments.count
+      %created_at= picture.created_at
+      %updated_at= picture.updated_at

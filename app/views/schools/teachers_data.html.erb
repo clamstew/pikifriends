@@ -1,0 +1,25 @@
+<school>
+  <id><%= @school.id %></id>
+  <name><%= @school.name %></name>
+  <teachers>
+    <% @teachers.each{|teacher| %>
+      <teacher>
+        <id><%= teacher.id %></id>
+        <firstname><%=h teacher.firstname %></firstname>
+        <lastname><%=h teacher.lastname %></lastname>
+        <created_at><%=h teacher.created_at %></created_at>
+        <login_count><%= teacher.login %></login_count>
+        <aboutme_length><%= teacher.about.length %></aboutme_length>
+        
+        <friends_count><%= teacher.linked_friendships.count %></friends_count>
+        <messages_count><%= teacher.get_messages_count() %></messages_count>
+        <blogs_count><%= teacher.blogs.count %></blogs_count>
+        <blog_comments_count><%= teacher.get_blog_comments_count() %></blog_comments_count>
+        <images_count><%= teacher.pictures.count %></images_count>
+        <image_comments_count><%= teacher.get_image_comments_count() %></image_comments_count>
+        
+      </teacher>
+    <%}%>
+  </teachers>
+</school>
+

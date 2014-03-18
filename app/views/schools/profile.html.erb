@@ -1,0 +1,22 @@
+<school>
+  <id><%= @school.id %></id>
+  <name><%=h @school.name %></name>
+  <location><%=h @school.location %></location>
+  <country><%=h @school.country.name %></country>
+  <grades>
+  <% @school.grades.each{|grade| %>
+    <grade>
+      <id><%= grade.id %></id>
+      <name><%=h grade.name %></name>
+      <classrooms>
+      <% grade.classrooms.each{|classroom| %>
+        <classroom>
+          <id><%= classroom.id %></id>
+          <name><%=h classroom.name %></name>
+        </classroom>
+      <%}%>
+      </classrooms>
+    </grade>
+  <%}%>
+  </grades>
+</school>

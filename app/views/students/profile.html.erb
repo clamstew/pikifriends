@@ -1,0 +1,18 @@
+<user>
+  <username><%= @user.username %></username>
+  <id><%= @user.id %></id>
+  <role><%= @user.role.name %></role>
+  <firstname><%=h @user.firstname %></firstname>
+  <lastname><%=h @user.lastname %></lastname>
+  <about><%=h @user.about %></about>
+  <mykeyword_list><%=h @user.mykeyword_list %></mykeyword_list>
+  <thumb src="<%=h url_for_file_column(@user,'image','thumb') %>" />
+	<medium src="<%=h url_for_file_column(@user,'image','medium') %>" />
+  <original src="<%=h url_for_file_column(@user,'image') %>" />
+  <school>
+   <id><%=h @user.school.id %></id>
+   <name><%=h @user.school.name %></name>
+   <location><%=h @user.school.location %></location>
+   <country><%=h @user.school.country.name %></country>
+  </school>
+</user>

@@ -1,0 +1,9 @@
+!!! XML
+%headlines
+  - @headlines.each do |headline|
+    %headline
+      %id= headline.id
+      %title= headline.title
+      %body= nl2br headline.body
+      %medium= url_for_file_column(headline,'image','medium')
+      %published_at= headline.published_at.to_s(:db)

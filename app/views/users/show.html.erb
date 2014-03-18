@@ -1,0 +1,53 @@
+<p>
+	<b>username:</b><br />
+	<%= @user.username %><br />
+</p>
+
+<p>
+	<b>password:</b><br />
+	<%= @user.password %><br />
+</p>
+
+<p>
+	<b>firstname:</b><br />
+	<%= @user.firstname %><br />
+</p>
+
+<p>
+	<b>lastname:</b><br />
+	<%= @user.lastname %><br />
+</p>
+
+<p>
+	<b>about:</b><br />
+	<%= @user.about %><br />
+</p>
+
+<p>
+	<b>username:</b><br />
+	<%= @user.username %><br />
+</p>
+
+<p>
+	<b>mykeyword_list:</b><br />
+	<%= @user.mykeyword_list %><br />
+</p>
+
+<p>
+	<b>school:</b><br />
+	<%= @user.school.name %><br />
+</p>
+
+<p>
+	<b>role:</b><br />
+	<%= @user.role.name %><br />
+</p>
+
+<p>
+  <% unless @user.image.blank? %>
+  <%= image_tag url_for_file_column(@user,'image','thumb') %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

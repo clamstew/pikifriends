@@ -1,0 +1,29 @@
+<h1>Editing teacher_ticket</h1>
+
+<% form_for(@teacher_ticket, :url=>{:action=>'update'}) do |f| %>
+  <%= f.error_messages %>
+  <p>
+	<%= f.label :firstname %>
+		<%= f.text_field :firstname %>
+	</p>
+	<p>
+	<%= f.label :lastname %>
+		<%= f.text_field :lastname %>
+	</p>
+	<p>
+	<%= f.label :email %>
+		<%= f.text_field :email %>
+	</p>
+	
+	<p>
+	  <b>school: </b>
+		<%=  @teacher_ticket.school.name %>
+	</p>
+	
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', admin_teacher_tickets_path(@teacher_ticket) %> |
+<%= link_to 'Back', admin_teacher_tickets_path %>

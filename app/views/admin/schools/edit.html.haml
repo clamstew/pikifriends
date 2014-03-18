@@ -1,0 +1,18 @@
+%h1 Editing school
+- form_for @school, :url => {:action=>'update'} do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    = f.text_field :name
+  %p
+    = f.label :location
+    = f.text_field :location
+  %p
+    = f.label :county_id
+    = f.collection_select 'country_id', Country.find(:all, :order=>'name'), :id, :name
+  
+  %p
+    = f.submit "Update"
+= link_to 'Show', admin_school_path(@school)
+|
+= link_to 'Back', admin_schools_path

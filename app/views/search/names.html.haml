@@ -1,0 +1,16 @@
+!!! XML
+%list
+  - @searchedUsers.each do |user| 
+    %item
+      %id= user.id
+      %firstname&= user.firstname
+      %lastname&= user.lastname
+      %about&= user.about
+      %role= user.role.name
+      %thumb= url_for_file_column(user, 'image', 'thumb')
+      %school
+        %id= user.school.id
+        %name&= user.school.name
+        %location&= user.school.location
+
+

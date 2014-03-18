@@ -1,0 +1,106 @@
+<activities>
+<% @sorted_recent_activities.each {|obj| %>
+  <% if obj.class==Blog %>
+  <activity type="friendblogCreated">
+    <user>  
+      <id><%= obj.user.id %></id>
+      <role><%=h obj.user.role.name %></role>
+      <firstname><%=h obj.user.firstname %></firstname>
+      <lastname><%=h obj.user.lastname %></lastname>
+      <thumb><%=h url_for_file_column(obj.user,'image','thumb') %></thumb>  
+    </user>
+    <blog>
+      <id><%= obj.id %></id>
+      <title><%=h obj.title %></title>
+      <created_at><%= obj.created_at %></created_at>
+    </blog>
+  </activity>
+  <% end %>
+  <% if obj.class==Picture %>
+  <activity type="friendimageCreated">
+    <user>  
+      <id><%= obj.user.id %></id>
+      <role><%=h obj.user.role.name %></role>
+      <firstname><%=h obj.user.firstname %></firstname>
+      <lastname><%=h obj.user.lastname %></lastname>
+      <thumb><%=h url_for_file_column(obj.user,'image','thumb') %></thumb>  
+    </user>
+    <image>
+      <id><%= obj.id %></id>
+      <title><%=h obj.title %></title>
+      <thumb><%=h url_for_file_column(obj,'image','thumb') %></thumb>
+      <created_at><%= obj.created_at %></created_at>
+    </image>
+  </activity>
+  <% end %>
+  <% if obj.class==BlogComment %>
+    <% write_user = User.find(obj.write_user_id.to_i) %>
+  <activity type="blogCommentForMe">
+    <user>  
+      <id><%= write_user.id %></id>
+      <role><%=h write_user.role.name %></role>
+      <firstname><%=h write_user.firstname %></firstname>
+      <lastname><%=h write_user.lastname %></lastname>
+      <thumb><%=h url_for_file_column(write_user,'image','thumb') %></thumb>  
+    </user>
+    <comment>
+      <id><%= obj.id %></id>
+      <blog_id><%= obj.blog.id %></blog_id>
+      <body><%=h obj.body %></body>
+      <created_at><%= obj.created_at %></created_at>
+    </comment>
+  </activity>
+  <% end %>
+  <% if obj.class==ImageComment %>
+    <% write_user = User.find(obj.write_user_id.to_i) %>
+  <activity type="imageCommentForMe">
+    <user>  
+      <id><%= write_user.id %></id>
+      <role><%=h write_user.role.name %></role>
+      <firstname><%=h write_user.firstname %></firstname>
+      <lastname><%=h write_user.lastname %></lastname>
+      <thumb><%=h url_for_file_column(write_user,'image','thumb') %></thumb>  
+    </user>
+    <comment>
+      <id><%= obj.id %></id>
+      <image_id><%= obj.picture.id %></image_id>
+      <body><%=h obj.body %></body>
+      <created_at><%= obj.created_at %></created_at>
+    </comment>
+  </activity>
+  <% end %>
+  <% if obj.class==ProfileComment %>
+    <% write_user = User.find(obj.write_user_id.to_i ) %>
+  <activity type="messageForMe">
+    <user>  
+      <id><%= write_user.id %></id>
+      <role><%=h write_user.role.name %></role>
+      <firstname><%=h write_user.firstname %></firstname>
+      <lastname><%=h write_user.lastname %></lastname>
+      <thumb><%=h url_for_file_column(write_user,'image','thumb') %></thumb>  
+    </user>
+    <message>
+      <id><%= obj.id %></id>
+      <body><%=h obj.body %></body>
+      <created_at><%= obj.created_at %></created_at>
+    </message>
+  </activity>
+  <% end %>
+  <% if obj.class==Friendship %>
+    <% reply_user = User.find( obj.replay_user.id.to_i ) %>
+  <activity type="linkedFriendship">
+    <user>  
+      <id><%= reply_user.id %></id>
+      <role><%=h reply_user.role.name %></role>
+      <firstname><%=h reply_user.firstname %></firstname>
+      <lastname><%=h reply_user.lastname %></lastname>
+      <thumb><%=h url_for_file_column(reply_user,'image','thumb') %></thumb>  
+    </user>
+    <friendship>
+      <id>obj.id</id>
+      <updated_at><%= obj.updated_at %></updated_at>
+    </friendship>
+  </activity>
+  <% end %>
+<% } %>
+</activities>

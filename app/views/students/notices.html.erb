@@ -1,0 +1,36 @@
+<notices>
+  
+  <friendships>
+  <% for noreply_friendship in @user.noreply_friendships %>
+    <% request_user = User.find(noreply_friendship.request_user_id) %>
+    <% reply_user   = User.find(noreply_friendship.replay_user_id) %>
+    
+    <friendship>
+      <id><%= noreply_friendship.id %></id>
+      
+      <request_user>
+        <id><%= request_user.id %></id>
+        <role><%= request_user.role.name %></role>
+        <firstname><%=h request_user.firstname %></firstname>
+        <lastname><%=h request_user.lastname %></lastname>
+        <thumb><%=h url_for_file_column( request_user,'image','thumb' ) %></thumb>
+        
+        <school>
+          <id><%= request_user.id %></id>
+          <name><%=h request_user.school.name %></name>
+          <location><%=h request_user.school.location %></location>
+          <country><%=h request_user.school.country.name %></country>
+        </school>
+      </request_user>
+      
+      <reply_user>
+        <id><%= reply_user.id %></id>
+        <role><%= reply_user.role.name %></role>
+        <firstname><%=h reply_user.firstname %></firstname>
+        <lastname><%=h reply_user.lastname %></lastname>
+        <thumb><%=h url_for_file_column( reply_user,'image','thumb' ) %></thumb>
+      </reply_user> 
+    </friendship>
+  <% end %>
+  </friendships>
+</notices>
